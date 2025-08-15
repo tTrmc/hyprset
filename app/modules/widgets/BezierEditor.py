@@ -246,7 +246,7 @@ class BezierEditorWindow(Adw.Window):
 
     def edit_bezier(self, bezier: Bezier) -> None:
         self.editing = bezier
-        self.bezier_editor.set_bezier(*self.editing.transition)
+        self.bezier_editor.set_bezier(*self.editing.points)
         self.bezier_editor.emit('changed')
 
         return self.present()

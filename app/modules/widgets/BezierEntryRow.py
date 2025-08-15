@@ -102,7 +102,7 @@ class BezierPreviewRow(Adw.ActionRow):
         self.set_title(self.bezier.name)
         self.set_subtitle(
             'cubic-bezier({})'.format(
-                ', '.join(map(str, self.bezier.transition))
+                ', '.join(map(str, self.bezier.points))
             )
         )
 
