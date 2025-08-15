@@ -21,7 +21,7 @@ def Adjustment(
         new_adjustment.set_step_increment(0.1)
         new_adjustment.set_page_increment(1.0)
 
-    ToastOverlay.instances.append(new_adjustment)
+    ToastOverlay.register_instance(new_adjustment)
 
     if new_adjustment.section is not None:
         opt = HyprData.get_option(new_adjustment.section)
@@ -105,7 +105,7 @@ class _Adjustment(Gtk.Adjustment):
             self.set_step_increment(0.1)
             self.set_page_increment(1.0)
 
-        ToastOverlay.instances.append(self)
+        ToastOverlay.register_instance(self)
 
         self.section = section
 

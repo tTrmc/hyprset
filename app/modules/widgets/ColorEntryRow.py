@@ -7,7 +7,7 @@ class ColorEntryRow(Adw.ActionRow):
     def __init__(self, title: str, description: str, section: str) -> None:
         super().__init__()
 
-        ToastOverlay.instances.append(self)
+        ToastOverlay.register_instance(self)
 
         self.set_title(title)
         self.set_subtitle(description)

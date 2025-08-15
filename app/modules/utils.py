@@ -2,7 +2,8 @@ from .imports import Gdk, Literal, Tuple, Gtk
 import string
 
 
-string.ascii_lowercase = string.ascii_lowercase + ' '
+# Use local constant instead of mutating global state
+ALLOWED_CHARS = string.ascii_lowercase + ' '
 
 # Im so fukin dumb, didnt know that Gdk.RGBA had Gdk.RGBA.parse() function
 
@@ -95,7 +96,7 @@ class ParseColor:
         color = ''.join(
             i if i in '1234567890,' else '0'
             for i in color
-            if i not in string.ascii_lowercase
+            if i not in ALLOWED_CHARS
         )
 
         sections = color.split(',')

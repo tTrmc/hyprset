@@ -11,7 +11,7 @@ class ColorExpanderRow(Adw.ExpanderRow):
             self.parent = parent
             self.set_title('Color')
             self.gdkcolor = Gdk.RGBA(0, 0, 0, 1)   # type:ignore
-            ToastOverlay.instances.append(self)
+            ToastOverlay.register_instance(self)
 
             if new_color:
                 self._default = new_color
@@ -52,7 +52,7 @@ class ColorExpanderRow(Adw.ExpanderRow):
 
     def __init__(self, title: str, subtitle: str, section: str):
         super().__init__()
-        ToastOverlay.instances.append(self)
+        ToastOverlay.register_instance(self)
         self.section = section
 
         self.button = Adw.ActionRow.new()

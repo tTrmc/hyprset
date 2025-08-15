@@ -5,6 +5,10 @@ from .app_pages import (
 )
 from .imports import Adw, Gdk, Gio, Gtk
 from .widgets import Icon, ToastOverlay, MyBezierEditorWindow
+from .constants import (
+    APP_ID, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, 
+    MOBILE_BREAKPOINT, CSS_FILE
+)
 
 
 class ApplicationWindow(Adw.ApplicationWindow):
@@ -14,9 +18,9 @@ class ApplicationWindow(Adw.ApplicationWindow):
 
         self.root = Adw.OverlaySplitView.new()
         self.breakpoint = Adw.Breakpoint.new(
-            Adw.BreakpointCondition.parse('max-width: 900px')  # type: ignore
+            Adw.BreakpointCondition.parse(f'max-width: {MOBILE_BREAKPOINT}px')  # type: ignore
         )
-        self.set_size_request(700, 360)
+        self.set_size_request(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT)
         self.set_content(self.root)
         self.add_breakpoint(self.breakpoint)
         self.breakpoint.add_setter(
@@ -108,7 +112,7 @@ class ApplicationWindow(Adw.ApplicationWindow):
         self.sidebar_listbox.unselect_all()
         return self.add_pages()
 
-    def on_row_activated(self, _, sidebar_rowbox: Gtk.ListBoxRow):
+    def on_row_activated(self, _: Gtk.ListBox, sidebar_rowbox: Gtk.ListBoxRow) -> None:
 
         match self.main_content_view_stack.get_visible_child_name().lower():
             case 'general':
@@ -127,7 +131,7 @@ class ApplicationWindow(Adw.ApplicationWindow):
             getattr(sidebar_rowbox, 'title')
         )
 
-    def add_pages(self):
+    def add_pages(self) -> None:
         for name, page in PAGES_DICT.items():
             self.main_content_view_stack.add_named(
                 page,
@@ -139,15 +143,15 @@ class Application(Adw.Application):
     def __init__(self) -> None:
         super().__init__()
         self.window = None
-        self.set_application_id('com.tokyob0t.HyprSettings')
+        self.set_application_id(APP_ID)
         self.set_flags(Gio.ApplicationFlags.FLAGS_NONE)
         self.load_css()
 
     def load_css(self) -> None:
         css_provider = Gtk.CssProvider()
-        css_provider.load_from_path(f'{__file__[:-15]}/style.css')
+        css_provider.load_from_path(f'{__file__[:-15]}/{CSS_FILE}')
 
-        return Gtk.StyleContext.add_provider_for_display(  # type: ignore
+        Gtk.StyleContext.add_provider_for_display(  # type: ignore
             Gdk.Display.get_default(),
             css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,

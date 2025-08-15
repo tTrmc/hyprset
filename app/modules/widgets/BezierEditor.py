@@ -1,5 +1,10 @@
 from ..imports import Gtk, Gdk, Adw, GObject, Bezier, Tuple, Union
 from ..utils import fg_color, accent_color
+from ..constants import (
+    BEZIER_EDITOR_WIDTH, BEZIER_EDITOR_HEIGHT, BEZIER_EDITOR_WINDOW_HEIGHT,
+    BEZIER_CONTROL_POINT_RADIUS, BEZIER_GRID_SIZE, BEZIER_CANVAS_SIZE,
+    BEZIER_CANVAS_OFFSET
+)
 from dataclasses import dataclass
 import math
 
@@ -18,7 +23,7 @@ class BezierEditor(Gtk.DrawingArea):
     def __init__(self):
         super().__init__()
         self.add_css_class('bezier-editor')
-        self.set_size_request(400, 400)
+        self.set_size_request(BEZIER_EDITOR_WIDTH, BEZIER_EDITOR_HEIGHT)
         self.set_halign(Gtk.Align.CENTER)
         self._entry_row = None
 
@@ -170,7 +175,7 @@ class BezierEditorWindow(Adw.Window):
         super().__init__()
         self.editing: Bezier
 
-        self.set_size_request(400, 700)
+        self.set_size_request(BEZIER_EDITOR_WIDTH, BEZIER_EDITOR_WINDOW_HEIGHT)
         self.set_modal(True)
         self.set_hide_on_close(True)
         self.set_resizable(False)
