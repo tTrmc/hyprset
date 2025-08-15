@@ -14,6 +14,7 @@ from .ButtonRow import ButtonRow
 from .SwitchRow import SwitchRow
 from .ColorEntryRow import ColorEntryRow
 from .ColorExpanderRow import ColorExpanderRow
+from .TextEntryRow import TextEntryRow
 from .CheckButtonImage import CheckButtonImage
 from .PreferencesGroup import PreferencesGroup
 from .SpinRow import SpinRow
