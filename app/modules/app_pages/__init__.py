@@ -6,6 +6,7 @@ from .gestures import gestures_page
 from .group import group_page
 from .input import input_page
 from .misc import misc_page
+from .variables import variables_page
 
 PAGES_DICT = {
     'General': general_page,
@@ -16,6 +17,7 @@ PAGES_DICT = {
     'Group': group_page,
     'Misc': misc_page,
     'Binds': binds_page,
+    'Variables': variables_page,
 }
 
 PAGES_LIST = [
