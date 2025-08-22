@@ -1,4 +1,5 @@
 from .animations import animations_page
+from .binds import binds_page
 from .decoration import decoration_page
 from .general import general_page
 from .gestures import gestures_page
@@ -14,6 +15,7 @@ PAGES_DICT = {
     'Gestures': gestures_page,
     'Group': group_page,
     'Misc': misc_page,
+    'Binds': binds_page,
 }
 
 PAGES_LIST = [
