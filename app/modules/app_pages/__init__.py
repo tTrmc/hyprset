@@ -4,9 +4,11 @@ from .decoration import decoration_page
 from .general import general_page
 from .gestures import gestures_page
 from .group import group_page
+from .idle import idle_page
 from .input import input_page
 from .misc import misc_page
 from .variables import variables_page
+from .wallpaper import wallpaper_page
 
 PAGES_DICT = {
     'General': general_page,
@@ -18,6 +20,8 @@ PAGES_DICT = {
     'Misc': misc_page,
     'Binds': binds_page,
     'Variables': variables_page,
+    'Wallpaper': wallpaper_page,
+    'Idle': idle_page,
 }
 
 PAGES_LIST = [
