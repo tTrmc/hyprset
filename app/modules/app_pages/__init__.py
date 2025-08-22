@@ -1,6 +1,7 @@
 from .animations import animations_page
 from .decoration import decoration_page
 from .general import general_page
+from .gestures import gestures_page
 from .input import input_page
 
 PAGES_DICT = {
@@ -8,6 +9,7 @@ PAGES_DICT = {
     'Decoration': decoration_page,
     'Animations': animations_page,
     'Input': input_page,
+    'Gestures': gestures_page,
 }
 
 PAGES_LIST = [
